@@ -143,9 +143,9 @@ def cord_choice(brd_crds, if_computer, symbol_player, symbol_computer, symbol_nu
         return rand
 
     choice = input("Podaj miejsce do wstawienia symbolu: ")
-    if brd_crds[int(choice) - 1] != symbol_null:
-        print("Miejsce już zajęte!!!")
-        cord_choice(brd_crds, False, symbol_player, symbol_computer, symbol_null)
+    while int(choice) > 10 or int(choice) < 1 or brd_crds[int(choice) - 1] != symbol_null:
+        print("Miejsce już zajęte lub niepoprawny numer!")
+        return cord_choice(brd_crds, False, symbol_player, symbol_computer, symbol_null)
     return int(choice) - 1
 
 
@@ -181,7 +181,7 @@ if __name__ == "__main__":
     i = 0
     NULL_SYMBOL = "_"
     board_cords = [NULL_SYMBOL] * 9
-    print("--------  NUMERACJA PÓL --------")
+    print("-------- NUMERACJA PÓL --------")
     print(BOARD_WITH_CORDS)
 
     player_symbol, computer_symbol = choose_symbol()
